@@ -12,7 +12,6 @@ class Attendee(models.Model):
     name = models.CharField(max_length=200)
     company_name = models.CharField(max_length=200, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
-
     conference = models.ForeignKey(
         "events.Conference",
         related_name="attendees",
