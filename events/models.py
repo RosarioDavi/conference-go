@@ -33,6 +33,7 @@ class Location(models.Model):
     room_count = models.PositiveSmallIntegerField()
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+    image_url = models.URLField(null=True)
 
     state = models.ForeignKey(
         State,
@@ -66,7 +67,6 @@ class Conference(models.Model):
     updated = models.DateTimeField(auto_now=True)
     max_presentations = models.PositiveSmallIntegerField()
     max_attendees = models.PositiveIntegerField()
-
     location = models.ForeignKey(
         Location,
         related_name="conferences",

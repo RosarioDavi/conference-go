@@ -28,6 +28,13 @@ class Presentation(models.Model):
     wants to give at the conference.
     """
 
+    @classmethod
+    def create(cls, **kwargs):
+        kwargs["status"] = Status.objects.get(name="SUBMITTED")
+        presentation = cls(**kwargs)
+        presentation.save()
+        return presentation
+
     presenter_name = models.CharField(max_length=150)
     company_name = models.CharField(max_length=150, null=True, blank=True)
     presenter_email = models.EmailField()
@@ -60,9 +67,9 @@ class Presentation(models.Model):
     def approve(self):
         status = Status.objects.get(name="APPROVED")
         self.status = status
-        self.save
+        self.save()
 
     def reject(self):
         status = Status.objects.get(name="REJECTED")
         self.status = status
-        self.save
+        self.save()
